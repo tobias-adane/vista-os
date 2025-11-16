@@ -1,0 +1,237 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  background: #050505;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b0f2e 0%, #020202 55%, #000 100%);
+  color: #f5f6fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  width: min(1100px, 100%);
+  position: relative;
+}
+
+.launcher,
+.vision {
+  border-radius: 32px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  position: relative;
+  min-height: 520px;
+}
+
+.hint {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.greeting {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.subtext {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 8px;
+}
+
+.orb {
+  margin-top: 48px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #4b6bff, #ad52ff);
+  position: relative;
+  cursor: pointer;
+  align-self: center;
+  display: grid;
+  place-items: center;
+}
+
+.orb .pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: pulse 3s infinite;
+}
+
+.orb .orb-core {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0) 60%);
+}
+
+.status {
+  margin-top: 24px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.conversation {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.conversation label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+}
+
+.input-row input {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  padding: 14px 18px;
+}
+
+.input-row button {
+  border-radius: 999px;
+  border: none;
+  background: #4b6bff;
+  color: white;
+  padding: 0 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.log {
+  min-height: 140px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 16px;
+  white-space: pre-wrap;
+  font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+.vision-title {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vision-state {
+  font-size: 1.2rem;
+  margin-top: 4px;
+}
+
+.vision-feed {
+  position: relative;
+  margin-top: 32px;
+  height: 260px;
+  border-radius: 24px;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=60')
+      center/cover;
+  overflow: hidden;
+}
+
+.vision-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 7, 16, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+}
+
+.vision-feed.live .vision-overlay {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.vision-feed.live .vision-overlay::before {
+  content: '● LIVE';
+  color: #ff4f4f;
+  font-weight: 600;
+}
+
+.vision-events {
+  margin-top: 24px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vision-events li {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-size: 0.95rem;
+}
+
+.surface {
+  position: fixed;
+  inset: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 16px;
+  }
+
+  .launcher,
+  .vision {
+    padding: 24px;
+    min-height: auto;
+  }
+
+  .orb {
+    width: 140px;
+    height: 140px;
+  }
+}
