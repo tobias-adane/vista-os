@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vista OS – Launcher Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="launcher" aria-label="Launcher home">
+        <header>
+          <p class="hint" id="hint-text">Double tap to talk</p>
+          <p class="greeting">Hello Nora</p>
+          <p class="subtext">How can I help you?</p>
+        </header>
+        <button class="orb" id="orb" aria-label="Activate Iris">
+          <span class="pulse"></span>
+          <span class="orb-core"></span>
+        </button>
+        <div class="status" id="status-text">Iris is idle</div>
+        <div class="conversation">
+          <label for="command-input">Type a command to simulate speech</label>
+          <div class="input-row">
+            <input
+              id="command-input"
+              type="text"
+              placeholder="Example: Iris, send a message to Sam"
+              autocomplete="off"
+            />
+            <button id="run-command">Run</button>
+          </div>
+          <pre class="log" id="action-log" aria-live="polite"></pre>
+        </div>
+      </section>
+      <section class="vision" aria-label="Vision mode">
+        <header>
+          <p class="vision-title">Vision mode</p>
+          <p class="vision-state" id="vision-state">Hold anywhere to enable</p>
+        </header>
+        <div class="vision-feed" id="vision-feed">
+          <div class="vision-overlay" id="vision-overlay">Vision paused</div>
+        </div>
+        <ul class="vision-events" id="vision-events"></ul>
+      </section>
+    </main>
+    <div class="surface" id="surface" aria-label="Interaction surface"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
